@@ -17,197 +17,249 @@
 
 body{
   font-family:'Baloo 2', cursive;
-  background:linear-gradient(to bottom,#dff6ff,#cfeaff,#b8dcff);
+  background:#bfe6ff;
   overflow:hidden;
   color:white;
+  transition:1.2s ease;
 }
 
-/* glow background */
-body::before{
-  content:"";
+/* 🌈 MOODS */
+body.magnetic{ background:linear-gradient(135deg,#caa6ff,#9b7bff,#d8c2ff); }
+body.lanterns{ background:linear-gradient(135deg,#ffd7a6,#ffb36b,#ffe3b8); }
+body.grwm{ background:linear-gradient(135deg,#ffb6d9,#ff8fcf,#ffd1ea); }
+body.bubblegum{ background:linear-gradient(135deg,#ff9aa2,#ff6b6b,#ffc1c1); }
+
+/* LOADING */
+#loading{
   position:fixed;
   inset:0;
-  background:
-  radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 30%),
-  radial-gradient(circle at 80% 30%, rgba(255,255,255,0.25), transparent 30%),
-  radial-gradient(circle at 50% 90%, rgba(255,255,255,0.2), transparent 35%);
-  z-index:-5;
-}
-
-/* blobs */
-.blob{
-  position:fixed;
-  border-radius:50%;
-  filter:blur(40px);
-  opacity:0.4;
-  z-index:-4;
-  animation:float 10s infinite ease-in-out;
-}
-
-.blob1{width:200px;height:200px;background:#fff;top:10%;left:10%;}
-.blob2{width:250px;height:250px;background:#8fd3ff;top:60%;left:70%;}
-.blob3{width:180px;height:180px;background:#ffd6f6;top:40%;left:40%;}
-
-@keyframes float{
-  0%{transform:translateY(0px);}
-  50%{transform:translateY(-20px);}
-  100%{transform:translateY(0px);}
-}
-
-/* CUTSCENE */
-#cutscene{
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle,#dff6ff,#a8d8ff);
+  background:#bfe6ff;
   display:flex;
   justify-content:center;
   align-items:center;
-  flex-direction:column;
-  z-index:9999;
-  transition:opacity 1.5s ease;
+  z-index:99999;
+  transition:opacity 1s ease;
 }
 
-/* sparkles */
-.sparkle{
-  position:absolute;
-  width:6px;
-  height:6px;
-  background:white;
-  border-radius:50%;
-  box-shadow:0 0 10px #fff,0 0 20px #bfe6ff;
-  animation:sparkleMove linear infinite;
-}
-
-@keyframes sparkleMove{
-  0%{transform:translateY(100vh) scale(0.3);opacity:0;}
-  20%{opacity:1;}
-  100%{transform:translateY(-20vh) scale(1.2);opacity:0;}
-}
-
-/* ZOOM TRANSITION OVERLAY */
-#zoomOverlay{
+/* CUTSCENES */
+.cutscene{
   position:fixed;
   inset:0;
-  background:white;
+  background:#bfe6ff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:99998;
   opacity:0;
-  transform:scale(0.2);
   pointer-events:none;
-  z-index:9998;
+  transition:opacity 1s ease;
 }
 
-/* zoom animation */
-.zoomActive{
-  animation:zoomIn 0.8s ease forwards;
+.cutscene.show{
+  opacity:1;
+  pointer-events:auto;
 }
 
-@keyframes zoomIn{
-  0%{opacity:0; transform:scale(0.2);}
-  40%{opacity:0.8;}
-  100%{opacity:0; transform:scale(2);}
-}
-
-/* pages */
+/* PAGES */
 .page{
+  display:none;
   width:100%;
   height:100vh;
-  display:flex;
   justify-content:center;
   align-items:center;
 }
 
-/* HOME */
-#home{
-  overflow-y:auto;
-  padding:40px 0;
+.page.show{
+  display:flex;
 }
 
+/* PROFILE */
 .profile{
   width:90%;
   max-width:650px;
-  margin:auto;
-  background:rgba(255,255,255,0.18);
+  background:rgba(255,255,255,0.15);
   backdrop-filter:blur(15px);
   border-radius:35px;
-  padding:40px;
+  padding:35px;
   text-align:center;
-  border:1px solid rgba(255,255,255,0.3);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
-.profile img{
-  width:130px;
-  height:130px;
-  border-radius:50%;
-  object-fit:cover;
-  border:4px solid rgba(255,255,255,0.5);
-}
-
-.profile h1{
-  font-size:50px;
-  margin-top:10px;
-}
-
-.profile p{
-  margin-top:10px;
-  font-size:18px;
+/* ABOUT */
+.about{
+  font-size:15px;
   line-height:1.6;
-  opacity:0.9;
+  opacity:0.95;
 }
 
-/* buttons */
+/* LINKS */
+.btn-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
 .btn{
-  margin-top:12px;
-  padding:12px 22px;
+  padding:10px 14px;
   border:none;
   border-radius:999px;
   background:rgba(255,255,255,0.25);
-  color:white;
+  color:inherit;
   cursor:pointer;
-  transition:0.3s;
-  text-decoration:none;
-  display:inline-block;
 }
 
-.btn:hover{
-  transform:scale(1.05);
+/* SONGS */
+.song{
+  padding:12px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.2);
+  cursor:pointer;
 }
 
-/* MUSIC */
-#musicPage{
-  display:none;
-  flex-direction:column;
+/* FOOTER */
+footer{
+  font-size:12px;
+  opacity:0.75;
+  margin-top:10px;
 }
 
+/* BACK */
 .back{
   position:fixed;
   top:15px;
   left:15px;
-  z-index:50;
 }
 
-.song{
-  margin-top:12px;
-  padding:15px;
-  border-radius:20px;
-  background:rgba(255,255,255,0.2);
-  cursor:pointer;
-  transition:0.3s;
+/* CHAT */
+#chatRoom{
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
 }
 
-.song:hover{
-  transform:scale(1.05);
-  background:rgba(255,255,255,0.35);
-}
-
-#player{
-  margin-top:20px;
-  padding:20px;
-  border-radius:20px;
+.chatBox{
+  width:90%;
+  max-width:500px;
+  height:70%;
   background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(15px);
+  border-radius:25px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+}
+
+#chatLog{
+  flex:1;
+  overflow:auto;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.msg{
+  padding:8px 10px;
+  border-radius:12px;
+  max-width:80%;
+}
+
+.user{
+  align-self:flex-end;
+  background:rgba(255,255,255,0.25);
+}
+
+.ai{
+  align-self:flex-start;
+  background:rgba(255,255,255,0.15);
+}
+
+#chatInput{
+  margin-top:10px;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+}
+
+/* 📲 NOTIF STACK */
+#notifContainer{
+  position:fixed;
+  top:20px;
+  right:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:999999;
+}
+
+.notif{
+  background:rgba(255,255,255,0.2);
+  backdrop-filter:blur(15px);
+  padding:10px 14px;
+  border-radius:14px;
+  font-size:13px;
+  animation:pop 3s forwards;
+}
+
+@keyframes pop{
+  0%{opacity:0; transform:translateY(-10px);}
+  15%{opacity:1; transform:translateY(0);}
+  85%{opacity:1;}
+  100%{opacity:0; transform:translateY(-10px);}
+}
+
+/* ✨ SPARKLES */
+.sparkle{
+  position:fixed;
+  width:6px;
+  height:6px;
+  background:white;
+  border-radius:50%;
+  pointer-events:none;
+  animation:fade 0.6s linear forwards;
+}
+
+@keyframes fade{
+  to{
+    transform:translateY(-20px);
+    opacity:0;
+  }
+}
+
+/* 🌌 UNIVERSE ENDING */
+#universeEnding{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle,#0b0f2a,#000);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999999;
+  opacity:0;
+  pointer-events:none;
+  transition:2s ease;
+}
+
+#universeEnding.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.universeText{
   text-align:center;
 }
 
-/* LINKS */
-.links{
+.universeText h1{
+  font-size:50px;
+  letter-spacing:8px;
+}
+
+.universeText p{
+  font-size:14px;
+  opacity:0.8;
   margin-top:15px;
 }
 
@@ -216,119 +268,185 @@ body::before{
 
 <body>
 
-<div class="blob blob1"></div>
-<div class="blob blob2"></div>
-<div class="blob blob3"></div>
+<!-- LOADING -->
+<div id="loading">loading dreamspace...</div>
 
-<!-- CUTSCENE -->
-<div id="cutscene">
-  <h1>entering dream world...</h1>
-</div>
+<!-- CUTSCENES -->
+<div id="cutMusic" class="cutscene">entering music room ✦</div>
+<div id="cutChat" class="cutscene">entering chat room ✦</div>
 
-<!-- ZOOM EFFECT -->
-<div id="zoomOverlay"></div>
+<!-- NOTIFS -->
+<div id="notifContainer"></div>
 
 <!-- HOME -->
-<div id="home" class="page">
+<div id="home" class="page show">
 
 <div class="profile">
 
-<img src="https://i.pinimg.com/736x/6f/92/4f/6f924f712ac7d3f6d9f4a4fddf0f3c1b.jpg">
-
 <h1>dreamspace ✦</h1>
 
-<p>
-hii welcome to my tiny dream world ⋆｡°✩  
-i like cute things, music, doodling, decorating pages and pretending im in a mv ...
+<p class="about">
+hi, welcome to my dreamspace ⋆｡°✩<br><br>
+this is a soft digital universe built from music, moods, and floating memories.<br>
+it feels like drifting through a pastel dream you can’t fully wake up from.<br><br>
+everything shifts like scenes in a music video made of emotion.<br><br>
+somewhere inside all of this… is a feeling that never leaves.
 </p>
 
-<!-- RESTORED LINKS -->
-<div class="links">
-<a class="btn" href="https://open.spotify.com/user/316b74uamj7yv3zlkv4mhvc2me3e" target="_blank">spotify ♫</a>
-<a class="btn" href="https://au.pinterest.com/chriss_st4rzz/" target="_blank">pinterest ✿</a>
+<div class="btn-grid">
+<a class="btn" href="https://open.spotify.com/" target="_blank">spotify ♫</a>
+<a class="btn" href="https://pinterest.com/" target="_blank">pinterest ✿</a>
 </div>
 
+<div class="btn-grid">
 <button class="btn" onclick="openMusic()">music room ♫</button>
+<button class="btn" onclick="openChat()">chat room 💬</button>
+</div>
+
+<footer>
+made with love and a little bit of sparkle ✦
+</footer>
 
 </div>
 
 </div>
 
 <!-- MUSIC -->
-<div id="musicPage" class="page">
+<div id="music" class="page">
 
-<button class="btn back" onclick="closeMusic()">← back</button>
+<button class="btn back" onclick="goHome()">← back</button>
 
 <div class="profile">
 
 <h1>music room ♫</h1>
 
-<div class="song" onclick="playSong('magnetic','19D8LNpWwIPpi6hs9BG7dqd')">magnetic ✦</div>
-<div class="song" onclick="playSong('lanterns','1aKvZDoLGkNMxoRYgkckZG')">lanterns ✦</div>
-<div class="song" onclick="playSong('grwm','5cCbnrheuwtBF9dUx3dOLO')">grwm ✦</div>
-<div class="song" onclick="playSong('bubble gum','06c1p8O0RF26U0jSGJ7Rbc')">bubble gum ✦</div>
+<div class="song" onclick="setMood('magnetic')">magnetic ✦</div>
+<div class="song" onclick="setMood('lanterns')">lanterns ✦</div>
+<div class="song" onclick="setMood('grwm')">grwm ✦</div>
+<div class="song" onclick="setMood('bubblegum')">bubble gum ✦</div>
 
-<div id="player">
-<div id="nowPlaying">now playing: magnetic ✦</div>
-
-<button class="btn" id="openLink">open in spotify ♫</button>
 </div>
 
 </div>
 
+<!-- CHAT -->
+<div id="chatRoom">
+
+<div class="chatBox">
+
+<div id="chatLog"></div>
+
+<input id="chatInput" placeholder="talk to dreamspace..." onkeydown="if(event.key==='Enter')sendMsg()">
+
+<button class="btn" onclick="closeChat()">close</button>
+
+</div>
+
+</div>
+
+<!-- UNIVERSE END -->
+<div id="universeEnding">
+  <div class="universeText">
+    <h1>universe</h1>
+    <p>
+      everything here was a feeling you were meant to find again ✦<br><br>
+      dreamspace still exists between memory and music<br><br>
+      you can leave… but it stays with you
+    </p>
+  </div>
 </div>
 
 <script>
 
-/* CUTSCENE */
+/* LOADING */
 setTimeout(()=>{
-  const c=document.getElementById("cutscene");
-  c.style.opacity="0";
-  setTimeout(()=>c.style.display="none",1500);
-},2500);
+  document.getElementById("loading").style.display="none";
+},1800);
 
-/* sparkles */
-const cutscene=document.getElementById("cutscene");
+/* CUTSCENES */
+function cut(scene,next){
+  const el=document.getElementById(scene);
+  el.classList.add("show");
 
-for(let i=0;i<35;i++){
-  const s=document.createElement("div");
-  s.className="sparkle";
-  s.style.left=Math.random()*100+"vw";
-  s.style.animationDuration=(2+Math.random()*3)+"s";
-  s.style.animationDelay=Math.random()*2+"s";
-  cutscene.appendChild(s);
+  setTimeout(()=>{
+    el.classList.remove("show");
+    next();
+  },1200);
 }
 
 /* NAV */
 function openMusic(){
-  document.getElementById("home").style.display="none";
-  document.getElementById("musicPage").style.display="flex";
+  cut("cutMusic",()=>{
+    document.getElementById("home").classList.remove("show");
+    document.getElementById("music").classList.add("show");
+  });
 }
 
-function closeMusic(){
-  document.getElementById("musicPage").style.display="none";
-  document.getElementById("home").style.display="flex";
+function openChat(){
+  cut("cutChat",()=>{
+    document.getElementById("chatRoom").style.display="flex";
+  });
 }
 
-/* MUSIC + ZOOM TRANSITION */
-let currentLink="https://open.spotify.com/track/19D8LNpWwIPpi6hs9BG7dqd";
-
-function playSong(name,id){
-
-  document.getElementById("nowPlaying").innerText="now playing: "+name+" ✦";
-
-  currentLink="https://open.spotify.com/track/"+id;
-
-  // 💥 ZOOM EFFECT
-  const zoom=document.getElementById("zoomOverlay");
-  zoom.classList.remove("zoomActive");
-  void zoom.offsetWidth;
-  zoom.classList.add("zoomActive");
+function goHome(){
+  document.getElementById("music").classList.remove("show");
+  document.getElementById("home").classList.add("show");
+  document.getElementById("chatRoom").style.display="none";
 }
 
-/* spotify button fix */
-document.getElementById("openLink").addEventListener("click",()=>{
-  window.open(currentLink,"_blank");
+/* MOODS */
+function setMood(m){
+  document.body.className="";
+  document.body.classList.add(m);
+}
+
+/* CHAT */
+function sendMsg(){
+  let input=document.getElementById("chatInput");
+  let text=input.value.trim().toLowerCase();
+  if(!text) return;
+
+  let log=document.getElementById("chatLog");
+
+  log.innerHTML+=`<div class="msg user">you: ${text}</div>`;
+
+  if(text==="universe"){
+    document.getElementById("universeEnding").classList.add("show");
+    return;
+  }
+
+  let reply="dreamspace assistant: i hear you ✦";
+
+  log.innerHTML+=`<div class="msg ai">${reply}</div>`;
+
+  input.value="";
+  log.scrollTop=log.scrollHeight;
+
+  showNotif(reply);
+}
+
+/* 📲 STACK NOTIF */
+function showNotif(text){
+  const container=document.getElementById("notifContainer");
+
+  const n=document.createElement("div");
+  n.className="notif";
+  n.innerText=text;
+
+  container.appendChild(n);
+
+  setTimeout(()=>n.remove(),3000);
+}
+
+/* ✨ SPARKLES */
+document.addEventListener("mousemove",(e)=>{
+  let s=document.createElement("div");
+  s.className="sparkle";
+  s.style.left=e.pageX+"px";
+  s.style.top=e.pageY+"px";
+  document.body.appendChild(s);
+
+  setTimeout(()=>s.remove(),600);
 });
 
 </script>
