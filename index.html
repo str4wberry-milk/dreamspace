@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>dreamspace</title>
+<title>dreamspace ✦</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
 
@@ -24,12 +24,59 @@ body{
 }
 
 /* 🌈 MOODS */
-body.magnetic{ background:linear-gradient(135deg,#caa6ff,#9b7bff,#d8c2ff); }
-body.lanterns{ background:linear-gradient(135deg,#ffd7a6,#ffb36b,#ffe3b8); }
-body.grwm{ background:linear-gradient(135deg,#ffb6d9,#ff8fcf,#ffd1ea); }
-body.bubblegum{ background:linear-gradient(135deg,#ff9aa2,#ff6b6b,#ffc1c1); }
+body.magnetic{
+  background:linear-gradient(135deg,#caa6ff,#9b7bff,#d8c2ff);
+}
 
-/* LOADING */
+body.lanterns{
+  background:linear-gradient(135deg,#ffd7a6,#ffb36b,#ffe3b8);
+}
+
+body.grwm{
+  background:linear-gradient(135deg,#ffb6d9,#ff8fcf,#ffd1ea);
+}
+
+body.bubblegum{
+  background:linear-gradient(135deg,#ff9aa2,#ff6b6b,#ffc1c1);
+}
+
+/* ✨ FLOATING BG */
+.bgGlow{
+  position:fixed;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  filter:blur(90px);
+  opacity:0.25;
+  animation:float 12s infinite ease-in-out;
+  pointer-events:none;
+}
+
+.glow1{
+  background:#ffffff;
+  top:-80px;
+  left:-60px;
+}
+
+.glow2{
+  background:#d8b4ff;
+  bottom:-100px;
+  right:-70px;
+}
+
+.glow3{
+  background:#ffd8ef;
+  top:40%;
+  left:60%;
+}
+
+@keyframes float{
+  0%{transform:translateY(0px);}
+  50%{transform:translateY(-25px);}
+  100%{transform:translateY(0px);}
+}
+
+/* 🌌 LOADING */
 #loading{
   position:fixed;
   inset:0;
@@ -37,11 +84,38 @@ body.bubblegum{ background:linear-gradient(135deg,#ff9aa2,#ff6b6b,#ffc1c1); }
   display:flex;
   justify-content:center;
   align-items:center;
-  z-index:99999;
-  transition:opacity 1s ease;
+  flex-direction:column;
+  z-index:999999;
+  transition:1s ease;
 }
 
-/* CUTSCENES */
+.loadingText{
+  font-size:32px;
+  margin-bottom:20px;
+}
+
+.loadingBar{
+  width:220px;
+  height:10px;
+  border-radius:999px;
+  overflow:hidden;
+  background:rgba(255,255,255,0.2);
+}
+
+.loadingFill{
+  width:0%;
+  height:100%;
+  background:white;
+  animation:load 2.2s forwards;
+}
+
+@keyframes load{
+  to{
+    width:100%;
+  }
+}
+
+/* 🎬 CUTSCENES */
 .cutscene{
   position:fixed;
   inset:0;
@@ -49,52 +123,92 @@ body.bubblegum{ background:linear-gradient(135deg,#ff9aa2,#ff6b6b,#ffc1c1); }
   display:flex;
   justify-content:center;
   align-items:center;
-  z-index:99998;
+  flex-direction:column;
   opacity:0;
   pointer-events:none;
-  transition:opacity 1s ease;
+  transition:1s ease;
+  z-index:999998;
 }
 
 .cutscene.show{
   opacity:1;
-  pointer-events:auto;
 }
 
-/* PAGES */
+.cutscene h1{
+  font-size:40px;
+  animation:floatText 3s infinite ease-in-out;
+}
+
+.cutscene p{
+  margin-top:10px;
+  opacity:0.8;
+}
+
+@keyframes floatText{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+  100%{transform:translateY(0);}
+}
+
+/* ✨ MOVING SPARKLES */
+.sparkle{
+  position:fixed;
+  width:6px;
+  height:6px;
+  background:white;
+  border-radius:50%;
+  pointer-events:none;
+  animation:sparkleFade 0.7s linear forwards;
+  z-index:9999999;
+}
+
+@keyframes sparkleFade{
+  to{
+    transform:translateY(-25px) scale(0);
+    opacity:0;
+  }
+}
+
+/* 🌐 PAGES */
 .page{
-  display:none;
   width:100%;
   height:100vh;
+  display:none;
   justify-content:center;
   align-items:center;
+  padding:20px;
 }
 
 .page.show{
   display:flex;
 }
 
-/* PROFILE */
+/* 💿 PROFILE */
 .profile{
   width:90%;
-  max-width:650px;
-  background:rgba(255,255,255,0.15);
+  max-width:680px;
+  background:rgba(255,255,255,0.16);
   backdrop-filter:blur(15px);
   border-radius:35px;
   padding:35px;
   text-align:center;
   display:flex;
   flex-direction:column;
-  gap:12px;
+  gap:14px;
+  box-shadow:0 0 30px rgba(255,255,255,0.15);
 }
 
-/* ABOUT */
+.profile h1{
+  font-size:45px;
+}
+
 .about{
+  line-height:1.7;
   font-size:15px;
-  line-height:1.6;
   opacity:0.95;
 }
 
-/* LINKS */
+/* 🔘 BUTTONS */
 .btn-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -102,50 +216,58 @@ body.bubblegum{ background:linear-gradient(135deg,#ff9aa2,#ff6b6b,#ffc1c1); }
 }
 
 .btn{
-  padding:10px 14px;
   border:none;
   border-radius:999px;
-  background:rgba(255,255,255,0.25);
-  color:inherit;
+  padding:10px 14px;
+  background:rgba(255,255,255,0.22);
+  color:white;
   cursor:pointer;
+  transition:0.3s;
+  text-decoration:none;
 }
 
-/* SONGS */
+.btn:hover{
+  transform:scale(1.05);
+  background:rgba(255,255,255,0.35);
+}
+
+/* 🎵 SONGS */
 .song{
-  padding:12px;
+  padding:14px;
   border-radius:18px;
   background:rgba(255,255,255,0.2);
   cursor:pointer;
+  transition:0.3s;
 }
 
-/* FOOTER */
-footer{
-  font-size:12px;
-  opacity:0.75;
-  margin-top:10px;
+.song:hover{
+  transform:scale(1.03);
+  background:rgba(255,255,255,0.3);
 }
 
-/* BACK */
+/* ↩ BACK */
 .back{
   position:fixed;
   top:15px;
   left:15px;
+  z-index:999;
 }
 
-/* CHAT */
+/* 💬 CHAT */
 #chatRoom{
   position:fixed;
   inset:0;
   display:none;
   justify-content:center;
   align-items:center;
+  z-index:100;
 }
 
 .chatBox{
   width:90%;
-  max-width:500px;
-  height:70%;
-  background:rgba(255,255,255,0.15);
+  max-width:520px;
+  height:75%;
+  background:rgba(255,255,255,0.16);
   backdrop-filter:blur(15px);
   border-radius:25px;
   padding:20px;
@@ -158,37 +280,38 @@ footer{
   overflow:auto;
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:10px;
 }
 
 .msg{
-  padding:8px 10px;
-  border-radius:12px;
+  padding:10px;
+  border-radius:14px;
   max-width:80%;
 }
 
 .user{
   align-self:flex-end;
-  background:rgba(255,255,255,0.25);
+  background:rgba(255,255,255,0.3);
 }
 
 .ai{
   align-self:flex-start;
-  background:rgba(255,255,255,0.15);
+  background:rgba(255,255,255,0.16);
 }
 
 #chatInput{
   margin-top:10px;
-  padding:10px;
+  padding:12px;
   border:none;
-  border-radius:10px;
+  border-radius:12px;
+  outline:none;
 }
 
-/* 📲 NOTIF STACK */
+/* 📲 NOTIFS */
 #notifContainer{
   position:fixed;
-  top:20px;
-  right:20px;
+  top:15px;
+  right:15px;
   display:flex;
   flex-direction:column;
   gap:10px;
@@ -198,49 +321,45 @@ footer{
 .notif{
   background:rgba(255,255,255,0.2);
   backdrop-filter:blur(15px);
-  padding:10px 14px;
-  border-radius:14px;
-  font-size:13px;
-  animation:pop 3s forwards;
+  padding:12px;
+  border-radius:15px;
+  animation:notif 4s forwards;
 }
 
-@keyframes pop{
-  0%{opacity:0; transform:translateY(-10px);}
-  15%{opacity:1; transform:translateY(0);}
-  85%{opacity:1;}
-  100%{opacity:0; transform:translateY(-10px);}
-}
-
-/* ✨ SPARKLES */
-.sparkle{
-  position:fixed;
-  width:6px;
-  height:6px;
-  background:white;
-  border-radius:50%;
-  pointer-events:none;
-  animation:fade 0.6s linear forwards;
-}
-
-@keyframes fade{
-  to{
-    transform:translateY(-20px);
+@keyframes notif{
+  0%{
     opacity:0;
+    transform:translateY(-10px);
+  }
+
+  10%{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  85%{
+    opacity:1;
+  }
+
+  100%{
+    opacity:0;
+    transform:translateY(-10px);
   }
 }
 
-/* 🌌 UNIVERSE ENDING */
+/* 🌌 ENDING */
 #universeEnding{
   position:fixed;
   inset:0;
-  background:radial-gradient(circle,#0b0f2a,#000);
+  background:radial-gradient(circle,#0d1330,#000);
   display:flex;
   justify-content:center;
   align-items:center;
-  z-index:9999999;
+  text-align:center;
   opacity:0;
   pointer-events:none;
   transition:2s ease;
+  z-index:99999999;
 }
 
 #universeEnding.show{
@@ -248,19 +367,48 @@ footer{
   pointer-events:auto;
 }
 
-.universeText{
-  text-align:center;
-}
-
 .universeText h1{
-  font-size:50px;
-  letter-spacing:8px;
+  font-size:55px;
+  letter-spacing:10px;
 }
 
 .universeText p{
-  font-size:14px;
+  margin-top:20px;
   opacity:0.8;
-  margin-top:15px;
+  line-height:1.7;
+}
+
+/* 🆕 UPDATE CUTSCENE */
+#updateScene{
+  position:fixed;
+  inset:0;
+  background:rgba(191,230,255,0.95);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:999999999;
+  opacity:0;
+  pointer-events:none;
+  transition:1s ease;
+}
+
+#updateScene.show{
+  opacity:1;
+}
+
+#updateScene h1{
+  font-size:42px;
+}
+
+#updateScene p{
+  margin-top:10px;
+  opacity:0.8;
+}
+
+footer{
+  opacity:0.75;
+  font-size:12px;
 }
 
 </style>
@@ -268,18 +416,47 @@ footer{
 
 <body>
 
-<!-- LOADING -->
-<div id="loading">loading dreamspace...</div>
+<!-- ✨ BG -->
+<div class="bgGlow glow1"></div>
+<div class="bgGlow glow2"></div>
+<div class="bgGlow glow3"></div>
 
-<!-- CUTSCENES -->
-<div id="cutMusic" class="cutscene">entering music room ✦</div>
-<div id="cutChat" class="cutscene">entering chat room ✦</div>
+<!-- 🌌 LOADING -->
+<div id="loading">
+  <div class="loadingText">loading dreamspace...</div>
 
-<!-- NOTIFS -->
+  <div class="loadingBar">
+    <div class="loadingFill"></div>
+  </div>
+</div>
+
+<!-- 🎬 CUTSCENES -->
+<div id="introScene" class="cutscene">
+  <h1>dreamspace ✦</h1>
+  <p>welcome back to the universe</p>
+</div>
+
+<div id="musicScene" class="cutscene">
+  <h1>music room ♫</h1>
+  <p>changing atmosphere...</p>
+</div>
+
+<div id="chatScene" class="cutscene">
+  <h1>chat room 💬</h1>
+  <p>connecting to dreamspace assistant...</p>
+</div>
+
+<!-- 🆕 UPDATE CUTSCENE -->
+<div id="updateScene">
+  <h1>dreamspace updated ✦</h1>
+  <p>new memories were added to the universe</p>
+</div>
+
+<!-- 📲 NOTIFS -->
 <div id="notifContainer"></div>
 
-<!-- HOME -->
-<div id="home" class="page show">
+<!-- 🏠 HOME -->
+<div id="home" class="page">
 
 <div class="profile">
 
@@ -287,20 +464,32 @@ footer{
 
 <p class="about">
 hi, welcome to my dreamspace ⋆｡°✩<br><br>
-this is a soft digital universe built from music, moods, and floating memories.<br>
-it feels like drifting through a pastel dream you can’t fully wake up from.<br><br>
-everything shifts like scenes in a music video made of emotion.<br><br>
-somewhere inside all of this… is a feeling that never leaves.
+
+this is a soft digital universe built from music, moods and floating memories.<br><br>
+
+everything shifts like scenes in a dreamy music video.<br><br>
+
+some feelings stay here forever.
 </p>
 
 <div class="btn-grid">
-<a class="btn" href="https://open.spotify.com/" target="_blank">spotify ♫</a>
-<a class="btn" href="https://pinterest.com/" target="_blank">pinterest ✿</a>
+<a class="btn" href="https://open.spotify.com/" target="_blank">
+spotify ♫
+</a>
+
+<a class="btn" href="https://pinterest.com/" target="_blank">
+pinterest ✿
+</a>
 </div>
 
 <div class="btn-grid">
-<button class="btn" onclick="openMusic()">music room ♫</button>
-<button class="btn" onclick="openChat()">chat room 💬</button>
+<button class="btn" onclick="openMusic()">
+music room ♫
+</button>
+
+<button class="btn" onclick="openChat()">
+chat room 💬
+</button>
 </div>
 
 <footer>
@@ -311,143 +500,329 @@ made with love and a little bit of sparkle ✦
 
 </div>
 
-<!-- MUSIC -->
+<!-- 🎵 MUSIC -->
 <div id="music" class="page">
 
-<button class="btn back" onclick="goHome()">← back</button>
+<button class="btn back" onclick="goHome()">
+← back
+</button>
 
 <div class="profile">
 
 <h1>music room ♫</h1>
 
-<div class="song" onclick="setMood('magnetic')">magnetic ✦</div>
-<div class="song" onclick="setMood('lanterns')">lanterns ✦</div>
-<div class="song" onclick="setMood('grwm')">grwm ✦</div>
-<div class="song" onclick="setMood('bubblegum')">bubble gum ✦</div>
+<div class="song" onclick="setMood('magnetic')">
+magnetic ✦
+</div>
 
+<div class="song" onclick="setMood('lanterns')">
+lanterns ✦
+</div>
+
+<div class="song" onclick="setMood('grwm')">
+grwm ✦
+</div>
+
+<div class="song" onclick="setMood('bubblegum')">
+bubble gum ✦
 </div>
 
 </div>
 
-<!-- CHAT -->
+</div>
+
+<!-- 💬 CHAT -->
 <div id="chatRoom">
 
 <div class="chatBox">
 
 <div id="chatLog"></div>
 
-<input id="chatInput" placeholder="talk to dreamspace..." onkeydown="if(event.key==='Enter')sendMsg()">
+<input
+id="chatInput"
+placeholder="talk to dreamspace..."
+onkeydown="if(event.key==='Enter')sendMsg()"
+>
 
-<button class="btn" onclick="closeChat()">close</button>
+<button class="btn" onclick="closeChat()">
+close
+</button>
 
 </div>
 
 </div>
 
-<!-- UNIVERSE END -->
+<!-- 🌌 ENDING -->
 <div id="universeEnding">
-  <div class="universeText">
-    <h1>universe</h1>
-    <p>
-      everything here was a feeling you were meant to find again ✦<br><br>
-      dreamspace still exists between memory and music<br><br>
-      you can leave… but it stays with you
-    </p>
-  </div>
+
+<div class="universeText">
+
+<h1>universe</h1>
+
+<p>
+everything here was a feeling you were meant to find again ✦<br><br>
+
+dreamspace still exists somewhere between memory and music.<br><br>
+
+you can leave… but it stays with you.
+</p>
+
+</div>
+
 </div>
 
 <script>
 
-/* LOADING */
+/* 🌌 INTRO FLOW */
 setTimeout(()=>{
-  document.getElementById("loading").style.display="none";
-},1800);
 
-/* CUTSCENES */
-function cut(scene,next){
-  const el=document.getElementById(scene);
-  el.classList.add("show");
+  document.getElementById("loading").style.opacity="0";
 
   setTimeout(()=>{
-    el.classList.remove("show");
+
+    document.getElementById("loading").style.display="none";
+
+    const intro=document.getElementById("introScene");
+
+    intro.classList.add("show");
+
+    setTimeout(()=>{
+      intro.classList.remove("show");
+
+      document.getElementById("home").classList.add("show");
+
+    },2200);
+
+  },1000);
+
+},2400);
+
+/* ✨ SPARKLES */
+document.addEventListener("mousemove",(e)=>{
+
+  let s=document.createElement("div");
+
+  s.className="sparkle";
+
+  s.style.left=e.pageX+"px";
+  s.style.top=e.pageY+"px";
+
+  document.body.appendChild(s);
+
+  setTimeout(()=>{
+    s.remove();
+  },700);
+
+});
+
+/* 🎬 CUTSCENE HELPER */
+function playScene(id,next){
+
+  const scene=document.getElementById(id);
+
+  scene.classList.add("show");
+
+  setTimeout(()=>{
+
+    scene.classList.remove("show");
+
     next();
-  },1200);
+
+  },1600);
+
 }
 
-/* NAV */
+/* 🎵 OPEN MUSIC */
 function openMusic(){
-  cut("cutMusic",()=>{
+
+  playScene("musicScene",()=>{
+
     document.getElementById("home").classList.remove("show");
+
     document.getElementById("music").classList.add("show");
+
   });
+
 }
 
+/* 💬 OPEN CHAT */
 function openChat(){
-  cut("cutChat",()=>{
+
+  playScene("chatScene",()=>{
+
     document.getElementById("chatRoom").style.display="flex";
+
   });
+
 }
 
+/* ↩ HOME */
 function goHome(){
+
   document.getElementById("music").classList.remove("show");
+
   document.getElementById("home").classList.add("show");
+
+  closeChat();
+
+}
+
+/* 💬 CLOSE CHAT */
+function closeChat(){
+
   document.getElementById("chatRoom").style.display="none";
+
 }
 
-/* MOODS */
+/* 🌈 MOODS */
 function setMood(m){
+
   document.body.className="";
+
   document.body.classList.add(m);
+
 }
 
-/* CHAT */
-function sendMsg(){
-  let input=document.getElementById("chatInput");
-  let text=input.value.trim().toLowerCase();
-  if(!text) return;
-
-  let log=document.getElementById("chatLog");
-
-  log.innerHTML+=`<div class="msg user">you: ${text}</div>`;
-
-  if(text==="universe"){
-    document.getElementById("universeEnding").classList.add("show");
-    return;
-  }
-
-  let reply="dreamspace assistant: i hear you ✦";
-
-  log.innerHTML+=`<div class="msg ai">${reply}</div>`;
-
-  input.value="";
-  log.scrollTop=log.scrollHeight;
-
-  showNotif(reply);
-}
-
-/* 📲 STACK NOTIF */
+/* 📲 NOTIFS */
 function showNotif(text){
+
   const container=document.getElementById("notifContainer");
 
   const n=document.createElement("div");
+
   n.className="notif";
+
   n.innerText=text;
 
   container.appendChild(n);
 
-  setTimeout(()=>n.remove(),3000);
+  setTimeout(()=>{
+    n.remove();
+  },4000);
+
 }
 
-/* ✨ SPARKLES */
-document.addEventListener("mousemove",(e)=>{
-  let s=document.createElement("div");
-  s.className="sparkle";
-  s.style.left=e.pageX+"px";
-  s.style.top=e.pageY+"px";
-  document.body.appendChild(s);
+/* 💬 CHAT AI */
+function sendMsg(){
 
-  setTimeout(()=>s.remove(),600);
-});
+  let input=document.getElementById("chatInput");
+
+  let text=input.value.trim().toLowerCase();
+
+  if(!text) return;
+
+  let log=document.getElementById("chatLog");
+
+  log.innerHTML += `
+    <div class="msg user">
+      you: ${text}
+    </div>
+  `;
+
+  /* 🌌 SECRET ENDING */
+  if(text==="universe"){
+
+    document.getElementById("universeEnding").classList.add("show");
+
+    input.value="";
+
+    return;
+
+  }
+
+  let replies=[];
+
+  if(
+    text.includes("hi") ||
+    text.includes("hello") ||
+    text.includes("hey")
+  ){
+
+    replies=[
+      "heyyy ✦ welcome back",
+      "dreamspace missed u",
+      "you arrived like a new scene in a mv",
+      "the universe feels softer now ✦"
+    ];
+
+  }
+
+  else if(
+    text.includes("sad") ||
+    text.includes("cry")
+  ){
+
+    replies=[
+      "dreamspace is holding the feeling gently ✦",
+      "some songs were made for moments like this",
+      "you don’t have to carry every emotion alone",
+      "the stars here understand"
+    ];
+
+  }
+
+  else if(
+    text.includes("music") ||
+    text.includes("song")
+  ){
+
+    replies=[
+      "music changes the atmosphere here ✦",
+      "magnetic feels like purple electricity",
+      "bubble gum feels like neon candy clouds",
+      "lanterns feels warm and nostalgic"
+    ];
+
+  }
+
+  else{
+
+    replies=[
+      "dreamspace saved that thought somewhere safe ✦",
+      "that sounds like a midnight playlist thought",
+      "the atmosphere shifted after you said that",
+      "sometimes emotions look prettier as colors"
+    ];
+
+  }
+
+  let reply=replies[Math.floor(Math.random()*replies.length)];
+
+  setTimeout(()=>{
+
+    log.innerHTML += `
+      <div class="msg ai">
+        dreamspace assistant: ${reply}
+      </div>
+    `;
+
+    log.scrollTop=log.scrollHeight;
+
+    showNotif(reply);
+
+  },700);
+
+  input.value="";
+
+}
+
+/* 🆕 UPDATE CUTSCENE */
+function showUpdateScene(){
+
+  const u=document.getElementById("updateScene");
+
+  u.classList.add("show");
+
+  setTimeout(()=>{
+    u.classList.remove("show");
+  },3000);
+
+}
+
+/* auto trigger once */
+setTimeout(()=>{
+  showUpdateScene();
+},7000);
 
 </script>
 
