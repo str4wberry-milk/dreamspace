@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dreamspace</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Baloo 2', cursive;
+  background:linear-gradient(to bottom,#dff6ff,#cfeaff,#b8dcff);
+  overflow:hidden;
+  color:white;
+}
+
+/* glow background */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+  radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 30%),
+  radial-gradient(circle at 80% 30%, rgba(255,255,255,0.25), transparent 30%),
+  radial-gradient(circle at 50% 90%, rgba(255,255,255,0.2), transparent 35%);
+  z-index:-5;
+}
+
+/* blobs */
+.blob{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(40px);
+  opacity:0.4;
+  z-index:-4;
+  animation:float 10s infinite ease-in-out;
+}
+
+.blob1{width:200px;height:200px;background:#fff;top:10%;left:10%;}
+.blob2{width:250px;height:250px;background:#8fd3ff;top:60%;left:70%;}
+.blob3{width:180px;height:180px;background:#ffd6f6;top:40%;left:40%;}
+
+@keyframes float{
+  0%{transform:translateY(0px);}
+  50%{transform:translateY(-20px);}
+  100%{transform:translateY(0px);}
+}
+
+/* CUTSCENE */
+#cutscene{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle,#dff6ff,#a8d8ff);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:9999;
+  transition:opacity 1.5s ease;
+}
+
+/* sparkles */
+.sparkle{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:white;
+  border-radius:50%;
+  box-shadow:0 0 10px #fff,0 0 20px #bfe6ff;
+  animation:sparkleMove linear infinite;
+}
+
+@keyframes sparkleMove{
+  0%{transform:translateY(100vh) scale(0.3);opacity:0;}
+  20%{opacity:1;}
+  100%{transform:translateY(-20vh) scale(1.2);opacity:0;}
+}
+
+/* ZOOM TRANSITION OVERLAY */
+#zoomOverlay{
+  position:fixed;
+  inset:0;
+  background:white;
+  opacity:0;
+  transform:scale(0.2);
+  pointer-events:none;
+  z-index:9998;
+}
+
+/* zoom animation */
+.zoomActive{
+  animation:zoomIn 0.8s ease forwards;
+}
+
+@keyframes zoomIn{
+  0%{opacity:0; transform:scale(0.2);}
+  40%{opacity:0.8;}
+  100%{opacity:0; transform:scale(2);}
+}
+
+/* pages */
+.page{
+  width:100%;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* HOME */
+#home{
+  overflow-y:auto;
+  padding:40px 0;
+}
+
+.profile{
+  width:90%;
+  max-width:650px;
+  margin:auto;
+  background:rgba(255,255,255,0.18);
+  backdrop-filter:blur(15px);
+  border-radius:35px;
+  padding:40px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,0.3);
+}
+
+.profile img{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid rgba(255,255,255,0.5);
+}
+
+.profile h1{
+  font-size:50px;
+  margin-top:10px;
+}
+
+.profile p{
+  margin-top:10px;
+  font-size:18px;
+  line-height:1.6;
+  opacity:0.9;
+}
+
+/* buttons */
+.btn{
+  margin-top:12px;
+  padding:12px 22px;
+  border:none;
+  border-radius:999px;
+  background:rgba(255,255,255,0.25);
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+  text-decoration:none;
+  display:inline-block;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+}
+
+/* MUSIC */
+#musicPage{
+  display:none;
+  flex-direction:column;
+}
+
+.back{
+  position:fixed;
+  top:15px;
+  left:15px;
+  z-index:50;
+}
+
+.song{
+  margin-top:12px;
+  padding:15px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.2);
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.song:hover{
+  transform:scale(1.05);
+  background:rgba(255,255,255,0.35);
+}
+
+#player{
+  margin-top:20px;
+  padding:20px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.15);
+  text-align:center;
+}
+
+/* LINKS */
+.links{
+  margin-top:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+<!-- CUTSCENE -->
+<div id="cutscene">
+  <h1>entering dream world...</h1>
+</div>
+
+<!-- ZOOM EFFECT -->
+<div id="zoomOverlay"></div>
+
+<!-- HOME -->
+<div id="home" class="page">
+
+<div class="profile">
+
+<img src="https://i.pinimg.com/736x/6f/92/4f/6f924f712ac7d3f6d9f4a4fddf0f3c1b.jpg">
+
+<h1>dreamspace ✦</h1>
+
+<p>
+hii welcome to my tiny dream world ⋆｡°✩  
+i like cute things, music, doodling, decorating pages and pretending im in a mv ...
+</p>
+
+<!-- RESTORED LINKS -->
+<div class="links">
+<a class="btn" href="https://open.spotify.com/user/316b74uamj7yv3zlkv4mhvc2me3e" target="_blank">spotify ♫</a>
+<a class="btn" href="https://au.pinterest.com/chriss_st4rzz/" target="_blank">pinterest ✿</a>
+</div>
+
+<button class="btn" onclick="openMusic()">music room ♫</button>
+
+</div>
+
+</div>
+
+<!-- MUSIC -->
+<div id="musicPage" class="page">
+
+<button class="btn back" onclick="closeMusic()">← back</button>
+
+<div class="profile">
+
+<h1>music room ♫</h1>
+
+<div class="song" onclick="playSong('magnetic','19D8LNpWwIPpi6hs9BG7dqd')">magnetic ✦</div>
+<div class="song" onclick="playSong('lanterns','1aKvZDoLGkNMxoRYgkckZG')">lanterns ✦</div>
+<div class="song" onclick="playSong('grwm','5cCbnrheuwtBF9dUx3dOLO')">grwm ✦</div>
+<div class="song" onclick="playSong('bubble gum','06c1p8O0RF26U0jSGJ7Rbc')">bubble gum ✦</div>
+
+<div id="player">
+<div id="nowPlaying">now playing: magnetic ✦</div>
+
+<button class="btn" id="openLink">open in spotify ♫</button>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* CUTSCENE */
+setTimeout(()=>{
+  const c=document.getElementById("cutscene");
+  c.style.opacity="0";
+  setTimeout(()=>c.style.display="none",1500);
+},2500);
+
+/* sparkles */
+const cutscene=document.getElementById("cutscene");
+
+for(let i=0;i<35;i++){
+  const s=document.createElement("div");
+  s.className="sparkle";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=(2+Math.random()*3)+"s";
+  s.style.animationDelay=Math.random()*2+"s";
+  cutscene.appendChild(s);
+}
+
+/* NAV */
+function openMusic(){
+  document.getElementById("home").style.display="none";
+  document.getElementById("musicPage").style.display="flex";
+}
+
+function closeMusic(){
+  document.getElementById("musicPage").style.display="none";
+  document.getElementById("home").style.display="flex";
+}
+
+/* MUSIC + ZOOM TRANSITION */
+let currentLink="https://open.spotify.com/track/19D8LNpWwIPpi6hs9BG7dqd";
+
+function playSong(name,id){
+
+  document.getElementById("nowPlaying").innerText="now playing: "+name+" ✦";
+
+  currentLink="https://open.spotify.com/track/"+id;
+
+  // 💥 ZOOM EFFECT
+  const zoom=document.getElementById("zoomOverlay");
+  zoom.classList.remove("zoomActive");
+  void zoom.offsetWidth;
+  zoom.classList.add("zoomActive");
+}
+
+/* spotify button fix */
+document.getElementById("openLink").addEventListener("click",()=>{
+  window.open(currentLink,"_blank");
+});
+
+</script>
+
+</body>
+</html>
