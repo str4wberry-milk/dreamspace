@@ -1,3 +1,4 @@
+can u change this script to add the music and back button
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +16,7 @@
   box-sizing:border-box;
 }
 
-<audio id="bgMusic"></audio>
-  
-  body{
+body{
   font-family:'Baloo 2', cursive;
   background:#bfe6ff;
   overflow:hidden;
@@ -26,32 +25,7 @@
 }
 
 /* 🌈 MOODS */
-const music = document.getElementById("bgMusic");
-
-function setMood(m){
-
-  document.body.className="";
-  document.body.classList.add(m);
-
-  // 🎵 map moods to files
-  const tracks = {
-    magnetic: "magnetic.mp3",
-    lanterns: "lanterns.mp3",
-    grwm: "grwm.mp3",
-    bubblegum: "bubblegum.mp3"
-  };
-
-  // only play if file exists
-  if(tracks[m]){
-    music.src = tracks[m];
-    music.play();
-  }
-      <div class="song" onclick="setMood('magnetic')">magnetic ✦</div>
-<div class="song" onclick="setMood('lanterns')">lanterns ✦</div>
-<div class="song" onclick="setMood('grwm')">grwm ✦</div>
-<div class="song" onclick="setMood('bubblegum')">bubble gum ✦</div>
-}
-  body.magnetic{
+body.magnetic{
   background:linear-gradient(135deg,#caa6ff,#9b7bff,#d8c2ff);
 }
 
@@ -375,12 +349,8 @@ body.bubblegum{
 }
 
 /* 🌌 ENDING */
-function exitUniverse(){
-  document.getElementById("universeEnding").classList.remove("show");
-}
-      #universeEnding{
- <button class="btn back" onclick="exitUniverse()">← back</button>
-        position:fixed;
+#universeEnding{
+  position:fixed;
   inset:0;
   background:radial-gradient(circle,#0d1330,#000);
   display:flex;
