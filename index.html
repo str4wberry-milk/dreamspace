@@ -24,21 +24,10 @@ body{
 }
 
 /* 🌈 MOODS */
-body.magnetic{
-  background:linear-gradient(135deg,#caa6ff,#9b7bff,#d8c2ff);
-}
-
-body.lanterns{
-  background:linear-gradient(135deg,#ffd7a6,#ffb36b,#ffe3b8);
-}
-
-body.grwm{
-  background:linear-gradient(135deg,#ffb6d9,#ff8fcf,#ffd1ea);
-}
-
-body.bubblegum{
-  background:linear-gradient(135deg,#ff9aa2,#ff6b6b,#ffc1c1);
-}
+body.magnetic{background:linear-gradient(135deg,#caa6ff,#9b7bff,#d8c2ff);}
+body.lanterns{background:linear-gradient(135deg,#ffd7a6,#ffb36b,#ffe3b8);}
+body.grwm{background:linear-gradient(135deg,#ffb6d9,#ff8fcf,#ffd1ea);}
+body.bubblegum{background:linear-gradient(135deg,#ff9aa2,#ff6b6b,#ffc1c1);}
 
 /* ✨ FLOATING BG */
 .bgGlow{
@@ -52,23 +41,9 @@ body.bubblegum{
   pointer-events:none;
 }
 
-.glow1{
-  background:#ffffff;
-  top:-80px;
-  left:-60px;
-}
-
-.glow2{
-  background:#d8b4ff;
-  bottom:-100px;
-  right:-70px;
-}
-
-.glow3{
-  background:#ffd8ef;
-  top:40%;
-  left:60%;
-}
+.glow1{background:#ffffff;top:-80px;left:-60px;}
+.glow2{background:#d8b4ff;bottom:-100px;right:-70px;}
+.glow3{background:#ffd8ef;top:40%;left:60%;}
 
 @keyframes float{
   0%{transform:translateY(0px);}
@@ -89,10 +64,7 @@ body.bubblegum{
   transition:1s ease;
 }
 
-.loadingText{
-  font-size:32px;
-  margin-bottom:20px;
-}
+.loadingText{font-size:32px;margin-bottom:20px;}
 
 .loadingBar{
   width:220px;
@@ -109,11 +81,7 @@ body.bubblegum{
   animation:load 2.2s forwards;
 }
 
-@keyframes load{
-  to{
-    width:100%;
-  }
-}
+@keyframes load{to{width:100%;}}
 
 /* 🎬 CUTSCENES */
 .cutscene{
@@ -130,43 +98,17 @@ body.bubblegum{
   z-index:999998;
 }
 
-.cutscene.show{
-  opacity:1;
-}
+.cutscene.show{opacity:1;}
 
 .cutscene h1{
   font-size:40px;
   animation:floatText 3s infinite ease-in-out;
 }
 
-.cutscene p{
-  margin-top:10px;
-  opacity:0.8;
-}
-
 @keyframes floatText{
   0%{transform:translateY(0);}
   50%{transform:translateY(-8px);}
   100%{transform:translateY(0);}
-}
-
-/* ✨ SPARKLES */
-.sparkle{
-  position:fixed;
-  width:6px;
-  height:6px;
-  background:white;
-  border-radius:50%;
-  pointer-events:none;
-  animation:sparkleFade 0.7s linear forwards;
-  z-index:9999999;
-}
-
-@keyframes sparkleFade{
-  to{
-    transform:translateY(-25px) scale(0);
-    opacity:0;
-  }
 }
 
 /* 🌐 PAGES */
@@ -179,9 +121,7 @@ body.bubblegum{
   padding:20px;
 }
 
-.page.show{
-  display:flex;
-}
+.page.show{display:flex;}
 
 /* 💿 PROFILE */
 .profile{
@@ -195,17 +135,6 @@ body.bubblegum{
   display:flex;
   flex-direction:column;
   gap:14px;
-  box-shadow:0 0 30px rgba(255,255,255,0.15);
-}
-
-.profile h1{
-  font-size:45px;
-}
-
-.about{
-  line-height:1.7;
-  font-size:15px;
-  opacity:0.95;
 }
 
 /* 🔘 BUTTONS */
@@ -222,13 +151,6 @@ body.bubblegum{
   background:rgba(255,255,255,0.22);
   color:white;
   cursor:pointer;
-  transition:0.3s;
-  text-decoration:none;
-}
-
-.btn:hover{
-  transform:scale(1.05);
-  background:rgba(255,255,255,0.35);
 }
 
 /* 🎵 SONGS */
@@ -237,12 +159,6 @@ body.bubblegum{
   border-radius:18px;
   background:rgba(255,255,255,0.2);
   cursor:pointer;
-  transition:0.3s;
-}
-
-.song:hover{
-  transform:scale(1.03);
-  background:rgba(255,255,255,0.3);
 }
 
 /* ↩ BACK */
@@ -250,135 +166,34 @@ body.bubblegum{
   position:fixed;
   top:15px;
   left:15px;
-  z-index:999999999;
+  z-index:999;
 }
 
-/* 💬 CHAT */
-#chatRoom{
-  position:fixed;
-  inset:0;
+/* 📜 POTATO STORY PAGE */
+#potatoPage{
+  width:100%;
+  height:100vh;
   display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:100;
+  overflow-y:auto;
+  padding:60px 20px;
 }
 
-.chatBox{
-  width:90%;
-  max-width:520px;
-  height:75%;
-  background:rgba(255,255,255,0.16);
+#potatoPage.show{
+  display:block;
+}
+
+.storyBox{
+  max-width:800px;
+  margin:auto;
+  background:rgba(255,255,255,0.14);
   backdrop-filter:blur(15px);
-  border-radius:25px;
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-}
-
-#chatLog{
-  flex:1;
-  overflow:auto;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-.msg{
-  padding:10px;
-  border-radius:14px;
-  max-width:80%;
-}
-
-.user{
-  align-self:flex-end;
-  background:rgba(255,255,255,0.3);
-}
-
-.ai{
-  align-self:flex-start;
-  background:rgba(255,255,255,0.16);
-}
-
-#chatInput{
-  margin-top:10px;
-  padding:12px;
-  border:none;
-  border-radius:12px;
-  outline:none;
-}
-
-/* 📲 NOTIFS */
-#notifContainer{
-  position:fixed;
-  top:15px;
-  right:15px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  z-index:999999;
-}
-
-.notif{
-  background:rgba(255,255,255,0.2);
-  backdrop-filter:blur(15px);
-  padding:12px;
-  border-radius:15px;
-  animation:notif 4s forwards;
-}
-
-@keyframes notif{
-  0%{
-    opacity:0;
-    transform:translateY(-10px);
-  }
-
-  10%{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-  85%{
-    opacity:1;
-  }
-
-  100%{
-    opacity:0;
-    transform:translateY(-10px);
-  }
-}
-
-/* 🌌 ENDING */
-#universeEnding{
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle,#0d1330,#000);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  opacity:0;
-  pointer-events:none;
-  transition:2s ease;
-  z-index:99999999;
-}
-
-#universeEnding.show{
-  opacity:1;
-  pointer-events:auto;
-}
-
-.universeText h1{
-  font-size:55px;
-  letter-spacing:10px;
-}
-
-.universeText p{
-  margin-top:20px;
-  opacity:0.8;
+  padding:30px;
+  border-radius:30px;
   line-height:1.7;
 }
 
 footer{
+  margin-top:20px;
   opacity:0.75;
   font-size:12px;
 }
@@ -388,76 +203,37 @@ footer{
 
 <body>
 
-<!-- ✨ BG -->
-<div class="bgGlow glow1"></div>
-<div class="bgGlow glow2"></div>
-<div class="bgGlow glow3"></div>
-
-<!-- 🌌 LOADING -->
 <div id="loading">
   <div class="loadingText">loading dreamspace...</div>
-
-  <div class="loadingBar">
-    <div class="loadingFill"></div>
-  </div>
+  <div class="loadingBar"><div class="loadingFill"></div></div>
 </div>
 
-<!-- 🎬 CUTSCENES -->
-<div id="introScene" class="cutscene">
-  <h1>dreamspace ✦</h1>
-  <p>welcome back to the universe</p>
-</div>
-
-<div id="musicScene" class="cutscene">
-  <h1>music room ♫</h1>
-  <p>changing atmosphere...</p>
-</div>
-
-<div id="chatScene" class="cutscene">
-  <h1>chat room 💬</h1>
-  <p>connecting to dreamspace assistant...</p>
-</div>
-
-<!-- 📲 NOTIFS -->
-<div id="notifContainer"></div>
-
-<!-- 🏠 HOME -->
-<div id="home" class="page">
+<!-- HOME -->
+<div id="home" class="page show">
 
 <div class="profile">
 
 <h1>dreamspace ✦</h1>
 
 <p class="about">
-hi, welcome to my dreamspace ⋆｡°✩<br><br>
-
-this is a soft digital universe built from music, moods and floating memories.<br><br>
-
-everything shifts like scenes in a dreamy music video.<br><br>
-
-some feelings stay here forever.
+hi, welcome to my dreamspace ⋆｡°✩
 </p>
 
 <div class="btn-grid">
-<a class="btn" href="https://open.spotify.com/" target="_blank">
-spotify ♫
-</a>
 
-<a class="btn" href="https://pinterest.com/" target="_blank">
-pinterest ✿
-</a>
+<a class="btn" href="https://open.spotify.com/" target="_blank">spotify ♫</a>
+<a class="btn" href="https://pinterest.com/" target="_blank">pinterest ✿</a>
+
 </div>
 
 <div class="btn-grid">
-<button class="btn" onclick="openMusic()">
-music room ♫
-</button>
 
-<button class="btn" onclick="openChat()">
-chat room 💬
-</button>
+<button class="btn">music room ♫</button>
+<button class="btn">chat room 💬</button>
+
 </div>
 
+<!-- 🥔 NEW BUTTON -->
 <button class="btn" onclick="openPotato()">
 potato story 🥔
 </button>
@@ -467,142 +243,33 @@ made with love and a little bit of sparkle ✦
 </footer>
 
 </div>
-
-</div>
-
-<!-- 🎵 MUSIC -->
-<div id="music" class="page">
-
-<button class="btn back" onclick="goHome()">
-← back
-</button>
-
-<div class="profile">
-
-<h1>music room ♫</h1>
-
-<div class="song" onclick="setMood('magnetic')">
-magnetic ✦
-</div>
-
-<div class="song" onclick="setMood('lanterns')">
-lanterns ✦
-</div>
-
-<div class="song" onclick="setMood('grwm')">
-grwm ✦
-</div>
-
-<div class="song" onclick="setMood('bubblegum')">
-bubble gum ✦
-</div>
-
-</div>
-
-</div>
-
-<!-- 💬 CHAT -->
-<div id="chatRoom">
-
-<div class="chatBox">
-
-<div id="chatLog"></div>
-
-<input
-id="chatInput"
-placeholder="talk to dreamspace..."
-onkeydown="if(event.key==='Enter')sendMsg()"
->
-
-<button class="btn" onclick="closeChat()">
-close
-</button>
-
-</div>
-
 </div>
 
 <!-- 🥔 POTATO STORY -->
-<div id="potatoPage" class="page">
+<div id="potatoPage">
 
-<button class="btn back" onclick="closePotato()">
-← back
-</button>
+<button class="btn back" onclick="backHome()">← back</button>
 
-<div class="profile" style="
-height:85vh;
-overflow-y:auto;
-text-align:left;
-line-height:1.9;
-">
+<div class="storyBox">
 
-<h1 style="text-align:center;">
-potato story 🥔
-</h1>
+<h1>🥔 potato story</h1>
 
 <p>
-
-Once upon a time, a potato was in distress. He was vomiting samsung fridges and ate Jemma.
-
-Jemma bit the belly and killed the potato.
-
-Then the potato went to heaven with potato jesus.
-
-Potato jesus rejected him and became a potato salad.
-
-He then explodes.
-
-Then the potato rebirthed and gobbled the whole town (which was one person) and that person was Lisa.
-
-Lisa was sent to potato hell and became the Lisa potato, along with Jemma.
-
-In potato hell, they got deep fried and turned into Frenched fries for Mac Donalds, where they were eaten by Lucy.
-
-When Lucy pooped them out, they found themselves stuck together.
-
-After Jemma and Lisa were pooped out by Lucy, they were stuck together.
-
-They started punching and kicking each other.
-
-Eventually, Jemma was just better skilled and won.
-
-But then she fell off a cliff and was burnt to crisp by boiling lava.
-
-Then Lisa revived and poured a whole waterfall so Jemma was saved.
-
-Then they went to kill Lucy. HEHEHE.
-
-Except that was just a dream, because Lisa would never actually do that, so Jemma is still burning and Lucy was alive.
-
-Jemma slowly burned to death and became a potato pancake.
-
-Lisa then ate her.
-
-Lisa really liked Jemma pancakes, so then she decided to create more Jemma pancakes.
-
-It was so good!
-
-Lisa ate them all and became a chicken nugget.
-
-Chris became a fry.
-
-Seaweed snek summoned a big sky snakey to Hyper Bem everyone.
-
-Everyone got eviscerated.
-
-Then finally, Lisa got so drunk on Jemma pancakes that she fell off a cliff.
-
-But because she was so mad, her madness cushioned her fall.
-
+Once upon a time, a potato was in distress. He was vomiting samsung fridges and ate Jemma. Jemma bit the belly and killed the potato, Then the potato went to heaven with porato jesus. Potato jesus rejected him and became a potato salad. He then explodes. Then the potato rebirthed and gobbled the whole town (which was one person) and that person was Lisa. Lisa was sent to potato hell and became thee Lisa potato, along with Jemma. In potato hell, they got deep fried and turned into Frenched fries for Mac Donalds, where they were eaten by Lucy. When Lucy pooped them out, they found themselves stuck together.
 <br><br>
+After Jemma and Lisa were pooped out by Lucy, they were stuck together. They starteed punching and kicking each other. And eventually, Jemma was just better skilled and won. But then she fell off a cliff and was burnt to crisp by boiling lava. Then Lisa revived and poured a whole waterfall so Jemma was saved. Then they went to kill Lucy. HEHEHE. Except that was just a dream, beacuse Lisa would never actually do that, so Jemma is still burning and Lucy was alive. Jemma slowly burned to death and became a potato pancake, Lisa then ate her. Lisa really liked Jemma pancakes, so then she decided to crated more Jemma pancakes. It was so good! Lisa ate them all an became a chicken nugget. Chris became a fry. Seaweed snek summoned a big sky snakey to Hyper Bem everyone. Everyone got eviscirated. Then finally, Lisa got so drunk on Jemma pancakes that she fell of a cliff. But because she was so mad her madness cushioned her fall.
+<br><br><br>
 
-<center>
-(IN PROGRESS)
-</center>
+<b>PART 3</b><br><br>
 
+It was illegal to get drunk under the age of 16, so Lisa went to Jail. But is was even more illegal to cook lots of Jemma pancakes so she got put into a room with no sound to turn crazy. After 5 years there, Lisa was a very psycho, She thought that a turtle was her grandpa! Because she was a psycho she summoned pizza and sashimi to throw at the townspeople. Then Lucifer and Je m’appelle and Grace turned into food and Lisa ruled the world! Until Annie ate her. But Lisa kicked Annie in the stomach and Annie died. Lucifer turned into a turtle and shoved everyone into a vending machine charging $1000. Jemma banged on the door asking for sushi. Sashimi chaos happened, and Jemma died trying to get sushi… but also from a tennis ball incident. Then the pancake god shook the machine and everyone fell out. Seaweed Snek turned them into killer T cells. Everything went insane. Jemma respawned, robbed sushi from Lucifer’s house, and chaos continued.
 </p>
 
-<footer style="margin-top:25px;text-align:center;">
+<br>
+
+<p><b>(IN PROGRESS)</b></p>
+
+<footer>
 made with love and a little bit of sparkle ✦
 </footer>
 
@@ -610,244 +277,20 @@ made with love and a little bit of sparkle ✦
 
 </div>
 
-<!-- 🌌 ENDING -->
-<div id="universeEnding">
-
-<button class="btn back" onclick="closeUniverse()">
-← back
-</button>
-
-<div class="universeText">
-
-<h1>universe</h1>
-
-<p>
-everything here was a feeling you were meant to find again ✦<br><br>
-
-dreamspace still exists somewhere between memory and music.<br><br>
-
-you can leave… but it stays with you.
-</p>
-
-</div>
-
-</div>
-
 <script>
 
-/* 🌌 INTRO FLOW */
 setTimeout(()=>{
+  document.getElementById("loading").style.display="none";
+},2000);
 
-  document.getElementById("loading").style.opacity="0";
-
-  setTimeout(()=>{
-
-    document.getElementById("loading").style.display="none";
-
-    const intro=document.getElementById("introScene");
-
-    intro.classList.add("show");
-
-    setTimeout(()=>{
-      intro.classList.remove("show");
-
-      document.getElementById("home").classList.add("show");
-
-    },2200);
-
-  },1000);
-
-},2400);
-
-/* ✨ SPARKLES */
-document.addEventListener("mousemove",(e)=>{
-
-  let s=document.createElement("div");
-
-  s.className="sparkle";
-
-  s.style.left=e.pageX+"px";
-  s.style.top=e.pageY+"px";
-
-  document.body.appendChild(s);
-
-  setTimeout(()=>{
-    s.remove();
-  },700);
-
-});
-
-/* 🎬 CUTSCENE HELPER */
-function playScene(id,next){
-
-  const scene=document.getElementById(id);
-
-  scene.classList.add("show");
-
-  setTimeout(()=>{
-
-    scene.classList.remove("show");
-
-    next();
-
-  },1600);
-
-}
-
-/* 🎵 OPEN MUSIC */
-function openMusic(){
-
-  playScene("musicScene",()=>{
-
-    document.getElementById("home").classList.remove("show");
-
-    document.getElementById("music").classList.add("show");
-
-  });
-
-}
-
-/* 💬 OPEN CHAT */
-function openChat(){
-
-  playScene("chatScene",()=>{
-
-    document.getElementById("chatRoom").style.display="flex";
-
-  });
-
-}
-
-/* 🥔 OPEN POTATO */
 function openPotato(){
-
-  document.getElementById("home")
-  .classList.remove("show");
-
-  document.getElementById("potatoPage")
-  .classList.add("show");
-
+  document.getElementById("home").classList.remove("show");
+  document.getElementById("potatoPage").classList.add("show");
 }
 
-/* 🥔 CLOSE POTATO */
-function closePotato(){
-
-  document.getElementById("potatoPage")
-  .classList.remove("show");
-
-  document.getElementById("home")
-  .classList.add("show");
-
-}
-
-/* ↩ HOME */
-function goHome(){
-
-  document.getElementById("music").classList.remove("show");
-
+function backHome(){
+  document.getElementById("potatoPage").classList.remove("show");
   document.getElementById("home").classList.add("show");
-
-  closeChat();
-
-}
-
-/* 💬 CLOSE CHAT */
-function closeChat(){
-
-  document.getElementById("chatRoom").style.display="none";
-
-}
-
-/* 🌌 CLOSE UNIVERSE */
-function closeUniverse(){
-
-  document.getElementById("universeEnding")
-  .classList.remove("show");
-
-}
-
-/* 🌈 MOODS */
-function setMood(m){
-
-  document.body.className="";
-
-  document.body.classList.add(m);
-
-}
-
-/* 📲 NOTIFS */
-function showNotif(text){
-
-  const container=document.getElementById("notifContainer");
-
-  const n=document.createElement("div");
-
-  n.className="notif";
-
-  n.innerText=text;
-
-  container.appendChild(n);
-
-  setTimeout(()=>{
-    n.remove();
-  },4000);
-
-}
-
-/* 💬 CHAT AI */
-function sendMsg(){
-
-  let input=document.getElementById("chatInput");
-
-  let text=input.value.trim().toLowerCase();
-
-  if(!text) return;
-
-  let log=document.getElementById("chatLog");
-
-  log.innerHTML += `
-    <div class="msg user">
-      you: ${text}
-    </div>
-  `;
-
-  if(text==="universe"){
-
-    document.getElementById("universeEnding").classList.add("show");
-
-    input.value="";
-
-    return;
-
-  }
-
-  let replies=[
-
-    "dreamspace saved that thought somewhere safe ✦",
-    "that sounds like a midnight playlist thought",
-    "the atmosphere shifted after you said that",
-    "sometimes emotions look prettier as colors"
-
-  ];
-
-  let reply=replies[Math.floor(Math.random()*replies.length)];
-
-  setTimeout(()=>{
-
-    log.innerHTML += `
-      <div class="msg ai">
-        dreamspace assistant: ${reply}
-      </div>
-    `;
-
-    log.scrollTop=log.scrollHeight;
-
-    showNotif(reply);
-
-  },700);
-
-  input.value="";
-
 }
 
 </script>
