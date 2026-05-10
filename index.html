@@ -1,5 +1,4 @@
-
-<!DOT TYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -151,7 +150,7 @@ body.bubblegum{
   100%{transform:translateY(0);}
 }
 
-/* ✨ MOVING SPARKLES */
+/* ✨ SPARKLES */
 .sparkle{
   position:fixed;
   width:6px;
@@ -251,7 +250,7 @@ body.bubblegum{
   position:fixed;
   top:15px;
   left:15px;
-  z-index:999;
+  z-index:999999999;
 }
 
 /* 💬 CHAT */
@@ -379,34 +378,6 @@ body.bubblegum{
   line-height:1.7;
 }
 
-/* 🆕 UPDATE CUTSCENE */
-#updateScene{
-  position:fixed;
-  inset:0;
-  background:rgba(191,230,255,0.95);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  z-index:999999999;
-  opacity:0;
-  pointer-events:none;
-  transition:1s ease;
-}
-
-#updateScene.show{
-  opacity:1;
-}
-
-#updateScene h1{
-  font-size:42px;
-}
-
-#updateScene p{
-  margin-top:10px;
-  opacity:0.8;
-}
-
 footer{
   opacity:0.75;
   font-size:12px;
@@ -445,12 +416,6 @@ footer{
 <div id="chatScene" class="cutscene">
   <h1>chat room 💬</h1>
   <p>connecting to dreamspace assistant...</p>
-</div>
-
-<!-- 🆕 UPDATE CUTSCENE -->
-<div id="updateScene">
-  <h1>dreamspace updated ✦</h1>
-  <p>new memories were added to the universe</p>
 </div>
 
 <!-- 📲 NOTIFS -->
@@ -492,6 +457,10 @@ music room ♫
 chat room 💬
 </button>
 </div>
+
+<button class="btn" onclick="openPotato()">
+potato story 🥔
+</button>
 
 <footer>
 made with love and a little bit of sparkle ✦
@@ -553,8 +522,100 @@ close
 
 </div>
 
+<!-- 🥔 POTATO STORY -->
+<div id="potatoPage" class="page">
+
+<button class="btn back" onclick="closePotato()">
+← back
+</button>
+
+<div class="profile" style="
+height:85vh;
+overflow-y:auto;
+text-align:left;
+line-height:1.9;
+">
+
+<h1 style="text-align:center;">
+potato story 🥔
+</h1>
+
+<p>
+
+Once upon a time, a potato was in distress. He was vomiting samsung fridges and ate Jemma.
+
+Jemma bit the belly and killed the potato.
+
+Then the potato went to heaven with potato jesus.
+
+Potato jesus rejected him and became a potato salad.
+
+He then explodes.
+
+Then the potato rebirthed and gobbled the whole town (which was one person) and that person was Lisa.
+
+Lisa was sent to potato hell and became the Lisa potato, along with Jemma.
+
+In potato hell, they got deep fried and turned into Frenched fries for Mac Donalds, where they were eaten by Lucy.
+
+When Lucy pooped them out, they found themselves stuck together.
+
+After Jemma and Lisa were pooped out by Lucy, they were stuck together.
+
+They started punching and kicking each other.
+
+Eventually, Jemma was just better skilled and won.
+
+But then she fell off a cliff and was burnt to crisp by boiling lava.
+
+Then Lisa revived and poured a whole waterfall so Jemma was saved.
+
+Then they went to kill Lucy. HEHEHE.
+
+Except that was just a dream, because Lisa would never actually do that, so Jemma is still burning and Lucy was alive.
+
+Jemma slowly burned to death and became a potato pancake.
+
+Lisa then ate her.
+
+Lisa really liked Jemma pancakes, so then she decided to create more Jemma pancakes.
+
+It was so good!
+
+Lisa ate them all and became a chicken nugget.
+
+Chris became a fry.
+
+Seaweed snek summoned a big sky snakey to Hyper Bem everyone.
+
+Everyone got eviscerated.
+
+Then finally, Lisa got so drunk on Jemma pancakes that she fell off a cliff.
+
+But because she was so mad, her madness cushioned her fall.
+
+<br><br>
+
+<center>
+(IN PROGRESS)
+</center>
+
+</p>
+
+<footer style="margin-top:25px;text-align:center;">
+made with love and a little bit of sparkle ✦
+</footer>
+
+</div>
+
+</div>
+
 <!-- 🌌 ENDING -->
 <div id="universeEnding">
+
+<button class="btn back" onclick="closeUniverse()">
+← back
+</button>
 
 <div class="universeText">
 
@@ -657,6 +718,28 @@ function openChat(){
 
 }
 
+/* 🥔 OPEN POTATO */
+function openPotato(){
+
+  document.getElementById("home")
+  .classList.remove("show");
+
+  document.getElementById("potatoPage")
+  .classList.add("show");
+
+}
+
+/* 🥔 CLOSE POTATO */
+function closePotato(){
+
+  document.getElementById("potatoPage")
+  .classList.remove("show");
+
+  document.getElementById("home")
+  .classList.add("show");
+
+}
+
 /* ↩ HOME */
 function goHome(){
 
@@ -672,6 +755,14 @@ function goHome(){
 function closeChat(){
 
   document.getElementById("chatRoom").style.display="none";
+
+}
+
+/* 🌌 CLOSE UNIVERSE */
+function closeUniverse(){
+
+  document.getElementById("universeEnding")
+  .classList.remove("show");
 
 }
 
@@ -720,7 +811,6 @@ function sendMsg(){
     </div>
   `;
 
-  /* 🌌 SECRET ENDING */
   if(text==="universe"){
 
     document.getElementById("universeEnding").classList.add("show");
@@ -731,61 +821,14 @@ function sendMsg(){
 
   }
 
-  let replies=[];
+  let replies=[
 
-  if(
-    text.includes("hi") ||
-    text.includes("hello") ||
-    text.includes("hey")
-  ){
+    "dreamspace saved that thought somewhere safe ✦",
+    "that sounds like a midnight playlist thought",
+    "the atmosphere shifted after you said that",
+    "sometimes emotions look prettier as colors"
 
-    replies=[
-      "heyyy ✦ welcome back",
-      "dreamspace missed u",
-      "you arrived like a new scene in a mv",
-      "the universe feels softer now ✦"
-    ];
-
-  }
-
-  else if(
-    text.includes("sad") ||
-    text.includes("cry")
-  ){
-
-    replies=[
-      "dreamspace is holding the feeling gently ✦",
-      "some songs were made for moments like this",
-      "you don’t have to carry every emotion alone",
-      "the stars here understand"
-    ];
-
-  }
-
-  else if(
-    text.includes("music") ||
-    text.includes("song")
-  ){
-
-    replies=[
-      "music changes the atmosphere here ✦",
-      "magnetic feels like purple electricity",
-      "bubble gum feels like neon candy clouds",
-      "lanterns feels warm and nostalgic"
-    ];
-
-  }
-
-  else{
-
-    replies=[
-      "dreamspace saved that thought somewhere safe ✦",
-      "that sounds like a midnight playlist thought",
-      "the atmosphere shifted after you said that",
-      "sometimes emotions look prettier as colors"
-    ];
-
-  }
+  ];
 
   let reply=replies[Math.floor(Math.random()*replies.length)];
 
@@ -806,24 +849,6 @@ function sendMsg(){
   input.value="";
 
 }
-
-/* 🆕 UPDATE CUTSCENE */
-function showUpdateScene(){
-
-  const u=document.getElementById("updateScene");
-
-  u.classList.add("show");
-
-  setTimeout(()=>{
-    u.classList.remove("show");
-  },3000);
-
-}
-
-/* auto trigger once */
-setTimeout(()=>{
-  showUpdateScene();
-},7000);
 
 </script>
 
